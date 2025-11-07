@@ -9,14 +9,20 @@ pipeline{
   stages{
      
     stage('build'){
-	sh "mvn compile"
-     }
+      steps{
+        sh "mvn compile"
+      }
+    }
  
     stage("test"){
+      steps{
         sh "mvn clean test"
       }
-~         
+    }
 
     stage("package"){
-        sh "package -DskipTests"
-     }          
+      steps{
+        sh "mvn package -DskipTests"
+      }
+    }          
+}
