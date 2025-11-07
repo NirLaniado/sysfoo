@@ -1,28 +1,29 @@
-pipeline{ 
- 
+pipeline {
+
   agent any
 
-  tools{
-    maven "mvn"
+  tools {
+    maven 'mvn'
   }
   
-  stages{
-     
-    stage('build'){
-      steps{
-        sh "mvn compile"
-      }
-    }
- 
-    stage("test"){
-      steps{
-        sh "mvn clean test"
+  stages {
+
+    stage('Build') {
+      steps {
+        sh 'mvn compile'
       }
     }
 
-    stage("package"){
-      steps{
-        sh "mvn package -DskipTests"
+    stage('Test') {
+      steps {
+        sh 'mvn clean test'
       }
-    }          
+    }
+
+    stage('Package') {
+      steps {
+        sh 'mvn package -DskipTests'
+      }
+    }
+  }
 }
